@@ -11,8 +11,13 @@ import java.util.Optional;
 @SpringBootTest
 class ItemRepositoryIntegrationTest {
     public static final String ITEM_TITLE_KRAJOBRAZ = "Krajobraz";
+
     @Autowired
     private ItemRepository itemRepository;
+
+//    public ItemRepositoryIntegrationTest(ItemRepository itemRepository) {
+//        this.itemRepository = itemRepository;
+//    }
 
     @Test
     void create() {

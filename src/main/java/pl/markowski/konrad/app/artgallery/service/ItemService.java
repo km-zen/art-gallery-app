@@ -5,6 +5,8 @@ import pl.markowski.konrad.app.artgallery.repository.ItemRepository;
 import pl.markowski.konrad.app.artgallery.repository.entity.ItemEntity;
 import pl.markowski.konrad.app.artgallery.web.model.ItemModel;
 
+import java.util.List;
+import java.util.Optional;
 import java.util.logging.Logger;
 
 @Service
@@ -21,24 +23,42 @@ public class ItemService {
     public void create(ItemModel itemModel) {
         LOGGER.info("create(" + itemModel + ")");
         ItemEntity itemEntity = new ItemEntity();
-        itemEntity.setTitle("Krajobraz");
-        itemEntity.setDescription("Ładny krajobraz");
+        itemEntity.setTitle(itemModel.getTitle());
+        itemEntity.setDescription(itemModel.getDescription());
         itemRepository.save(itemEntity);
     }
 
     // R - read
-    public void read() {
+    public ItemEntity read(Long id) throws Exception {
+        LOGGER.info("read(" + id + ")");
+        Optional<ItemEntity> optionalItemEntity = itemRepository.findById(id);
+        ItemEntity itemEntity = optionalItemEntity.orElseThrow(
+                () -> new Exception("nie znaleziono przedmiotu o id: " + id));
+        LOGGER.info("read(...) =  " + itemEntity);
+        return itemEntity;
     }
 
     // U - update
-    public void update() {
+    public void update(Long id, ItemModel itemModel) throws Exception {
+        LOGGER.info("update(" + id + ")");
+        Optional<ItemEntity> optionalItemEntity = itemRepository.findById(id);
+        ItemEntity itemEntity = optionalItemEntity.orElseThrow(
+                () -> new Exception("nie znaleziono przedmiotu o id: " + id));
+        itemEntity.setTitle(itemModel.getTitle());
+        itemEntity.setDescription(itemModel.getDescription());
+        itemRepository.save(itemEntity);
     }
 
     // D - delete
-    public void delete() {
+    public void delete(Long id) throws Exception {
+        Optional<ItemEntity> optionalItemEntity = itemRepository.findById(id);
+        ItemEntity itemEntity = optionalItemEntity.orElseThrow(
+                () -> new Exception("nie znaleziono przedmiotu o id: " + id));
+        itemRepository.delete(itemEntity);
     }
 
     // L - list
-    public void list() {
+    public List<ItemEntity> list() {
+        return itemRepository.findAll();
     }
 }
