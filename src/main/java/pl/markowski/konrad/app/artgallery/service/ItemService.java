@@ -39,11 +39,11 @@ public class ItemService {
     }
 
     // U - update
-    public void update(Long id, ItemModel itemModel) throws Exception {
-        LOGGER.info("update(" + id + ")");
-        Optional<ItemEntity> optionalItemEntity = itemRepository.findById(id);
+    public void update( ItemModel itemModel) throws Exception {
+        LOGGER.info("update(" + itemModel + ")");
+        Optional<ItemEntity> optionalItemEntity = itemRepository.findById(itemModel.getId());
         ItemEntity itemEntity = optionalItemEntity.orElseThrow(
-                () -> new Exception("nie znaleziono przedmiotu o id: " + id));
+                () -> new Exception("nie znaleziono przedmiotu o id: " + itemModel.getId()));
         itemEntity.setTitle(itemModel.getTitle());
         itemEntity.setDescription(itemModel.getDescription());
         itemRepository.save(itemEntity);
