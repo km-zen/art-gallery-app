@@ -7,7 +7,7 @@
 <body>
 <h1>Create Item</h1>
 <div>
-    <form action="#" method="post">
+    <form action="#" th:action="@{/items/create}" method="post">
        Tytuł: <input type="text" name="title">
        Opis:  <input type="text" name="description">
        Cena:  <input type="text" name="price">

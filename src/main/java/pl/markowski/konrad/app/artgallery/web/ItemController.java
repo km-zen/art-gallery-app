@@ -25,6 +25,13 @@ public class ItemController {
         this.itemService = itemService;
     }
 
+    // L - list
+    @GetMapping
+    public String list(Model model) {
+        model.addAttribute("items", itemService.list());
+        return "list-items";
+    }
+
     @GetMapping(value = "/create")
     public String createView() {
         LOGGER.info("creteView()");
@@ -38,48 +45,48 @@ public class ItemController {
         LOGGER.info("create(" + itemModel + ")");
         itemService.create(itemModel);
 //        LOGGER.info("create(" + description + ")");
-        return "create-item";
+//        return "list-items";
+        return "redirect:/items";
     }
 
     // R - read
     @GetMapping("/read/{id}")
     public String read(@PathVariable(name = "id") Long id, Model model) throws Exception {
         LOGGER.info("read(" + id + ")");
-       ItemEntity item = itemService.read(id);
-       model.addAttribute("item", item);
+        ItemEntity item = itemService.read(id);
+        model.addAttribute("item", item);
         return "read-item";
     }
 
     // U - update
-    @GetMapping("/edit/{id}")
-    public String showUpdateForm(@PathVariable(name = "id")Long id, Model model) throws Exception {
-        LOGGER.info("showUpdateForm(" + id + ")");
+    @GetMapping("/update/{id}")
+    public String updateView(
+            @PathVariable(name = "id") Long id, Model model) throws Exception {
+        LOGGER.info("updateView(" + id + ")");
         ItemEntity item = itemService.read(id);
         model.addAttribute("item", item);
-    return "update-item";
+        return "update-item";
     }
 
-    @PostMapping("/update/{id}")
-    public String updateItem (@PathVariable (name = "id" ) Long id, ItemModel itemModel, Model model) throws Exception {
-        LOGGER.info("update(" + id + ")");
-        itemService.update(id, itemModel);
+//    @PostMapping("/update/{id}")
+    @PostMapping("/update")
+    public String update(
+//            @PathVariable(name = "id") Long id,
+            ItemModel itemModel, Model model) throws Exception {
+        LOGGER.info("update(" + itemModel + ")");
+        itemService.update( itemModel);
 
-        return "list-items";
+//        return "list-items";
+        return "redirect:/items";
     }
 
     // D - delete
     @GetMapping("/delete/{id}")
-    public String delete(@PathVariable (name = "id") Long id) throws Exception {
+    public String delete(@PathVariable(name = "id") Long id) throws Exception {
         LOGGER.info("delete(" + id + ")");
-       itemService.delete(id);
+        itemService.delete(id);
         return "list-items";
     }
 
-    // L - list
-    @GetMapping
-    public String list(Model model) {
-        model.addAttribute("items", itemService.list());
-        return "list-items";
 
-    }
 }

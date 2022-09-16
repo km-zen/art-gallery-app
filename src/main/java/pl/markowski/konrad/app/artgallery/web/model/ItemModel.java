@@ -1,8 +1,17 @@
 package pl.markowski.konrad.app.artgallery.web.model;
 
 public class ItemModel {
+    private Long id;
     private String title;
     private String description;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     public String getTitle() {
         return title;
@@ -23,7 +32,8 @@ public class ItemModel {
     @Override
     public String toString() {
         return "ItemModel{" +
-                "title='" + title + '\'' +
+                "id=" + id +
+                ", title='" + title + '\'' +
                 ", description='" + description + '\'' +
                 '}';
     }
