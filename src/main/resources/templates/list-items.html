@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Items Management</title>
+</head>
+<body>
+<div align="center">
+    <h1>Items Management</h1>
+    <table>
+        <thead>
+        <tr>
+            <th>Item title </th>
+            <th>Item description </th>
+            <th>Item price </th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="item : ${items}">
+            <td th:text="${item.title}"></td>
+            <td th:text="${item.description}"></td>
+            <td th:text="${item.price}"></td>
+            <td><a th:href="@{/items/update/{id}(id=${item.id})}">Edit</a></td>
+            <td><a th:href="@{/items/delete/{id}(id=${item.id})}">Delete</a></td>
+
+
+        </tr>
+        </tbody>
+    </table>
+    <a th:href="@{/artgallery}">Home Page</a></br>
+</div>
+</body>
+</html>
