@@ -15,11 +15,20 @@ public class ItemEntity {
 
     private String title;
     private String description;
+    private int price;
 
     @ManyToOne
     private AuthorEntity author;
 
     public ItemEntity() {
+    }
+
+    public int getPrice() {
+        return price;
+    }
+
+    public void setPrice(int price) {
+        this.price = price;
     }
 
     public Long getId() {
@@ -60,6 +69,8 @@ public class ItemEntity {
                 "id=" + id +
                 ", title='" + title + '\'' +
                 ", description='" + description + '\'' +
+                ", price=" + price +
+                ", author=" + author +
                 '}';
     }
 }

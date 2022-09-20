@@ -4,6 +4,15 @@ public class ItemModel {
     private Long id;
     private String title;
     private String description;
+    private int price;
+
+    public int getPrice() {
+        return price;
+    }
+
+    public void setPrice(int price) {
+        this.price = price;
+    }
 
     public Long getId() {
         return id;
@@ -35,6 +44,7 @@ public class ItemModel {
                 "id=" + id +
                 ", title='" + title + '\'' +
                 ", description='" + description + '\'' +
+                ", price=" + price +
                 '}';
     }
 }
