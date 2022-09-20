@@ -4,6 +4,7 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import pl.markowski.konrad.app.artgallery.repository.entity.AuthorEntity;
 import pl.markowski.konrad.app.artgallery.repository.entity.ItemEntity;
 
 import java.util.Optional;
@@ -66,4 +67,17 @@ class ItemRepositoryIntegrationTest {
         Assertions.assertEquals(ITEM_TITLE_KRAJOBRAZ, readItemEntity.getTitle());
 
     }
+
+    @Test
+    void itemAuthor(){
+        // Given
+        ItemEntity itemEntity = new ItemEntity();
+        AuthorEntity authorEntity = new AuthorEntity();
+        itemEntity.setAuthor(authorEntity);
+        // When
+        itemRepository.save(itemEntity);
+        // Then
+
+    }
+
 }
