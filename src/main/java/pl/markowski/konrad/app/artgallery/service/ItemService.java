@@ -25,6 +25,7 @@ public class ItemService {
         ItemEntity itemEntity = new ItemEntity();
         itemEntity.setTitle(itemModel.getTitle());
         itemEntity.setDescription(itemModel.getDescription());
+        itemEntity.setPrice(itemModel.getPrice());
         itemRepository.save(itemEntity);
     }
 
@@ -46,6 +47,7 @@ public class ItemService {
                 () -> new Exception("nie znaleziono przedmiotu o id: " + itemModel.getId()));
         itemEntity.setTitle(itemModel.getTitle());
         itemEntity.setDescription(itemModel.getDescription());
+        itemEntity.setPrice(itemModel.getPrice());
         itemRepository.save(itemEntity);
     }
 
