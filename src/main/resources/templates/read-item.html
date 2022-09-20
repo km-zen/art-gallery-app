@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Item Details </title>
+</head>
+<body>
+<h1>Item Details</h1>
+<div>
+    <table>
+        <thead>
+        <tr>
+            <th>Title</th>
+            <th>Description</th>
+            <th>Edit</th>
+            <th>Delete</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:object="${item}">
+            <td th:text="${item.title}"></td>
+            <td th:text="${item.description}"></td>
+            <td th:text="${item.price}"></td>
+            <td><a th:href="@{/items/edit/{id}(id=${item.id})}">Edit</a></td>
+            <td><a th:href="@{/items/delete/{id}(id=${item.id})}">Delete</a></td>
+            <td><a th:href="@{/artgallery}">Home Page</a></td>
+
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

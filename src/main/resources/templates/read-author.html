@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Author Information</title>
+</head>
+<body>
+<h1>Author Information</h1>
+<div>
+    <table>
+        <thead>
+        <tr>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Name</th>
+
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:object="${author}">
+            <td th:text="${author.firstName}"></td>
+            <td th:text="${author.lastName}"></td>
+            <td th:text="${author.name}"></td>
+            <td><a th:href="@{/authors/edit/{id}(id=${author.id})}">Edit</a></td>
+            <td><a th:href="@{/authors/delete/{id}(id=${author.id})}">Delete</a></td>
+            <td><a th:href="@{/artgallery}">Home Page</a></td>
+
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

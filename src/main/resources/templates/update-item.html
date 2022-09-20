@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Update Item</title>
+</head>
+<body>
+<h1>Update Item</h1>
+
+<div>
+<!--    th:action="@{/items/update/{id}(id=${item.id})}"-->
+    <form action="#" th:action="@{/items/update}" th:object="${item}" method="post">
+        <input type="hidden" th:field="${item.id}">
+        New title <input type="text" th:field="${item.title}">
+        New description <input type="text" th:field="${item.description}">
+        New price <input type="number" th:field="${item.price}">
+        <button type="submit">Update Item</button>
+    </form>
+</div>
+</body>
+</html>
