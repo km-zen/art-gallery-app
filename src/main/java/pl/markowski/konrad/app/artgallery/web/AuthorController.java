@@ -70,7 +70,7 @@ public class AuthorController {
     public String delete(@PathVariable(name = "id") Long id) throws Exception {
         LOGGER.info("delete(" + id + ")");
         authorService.delete(id);
-        return "list-authors";
+        return "redirect:/authors";
     }
 
 }

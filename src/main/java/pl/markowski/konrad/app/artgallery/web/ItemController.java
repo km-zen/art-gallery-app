@@ -85,7 +85,7 @@ public class ItemController {
     public String delete(@PathVariable(name = "id") Long id) throws Exception {
         LOGGER.info("delete(" + id + ")");
         itemService.delete(id);
-        return "list-items";
+        return "redirect:/items";
     }
 
 
