@@ -70,7 +70,7 @@ public class ItemEntity {
                 ", title='" + title + '\'' +
                 ", description='" + description + '\'' +
                 ", price=" + price +
-                ", author=" + author +
+//                ", author=" + author +
                 '}';
     }
 }

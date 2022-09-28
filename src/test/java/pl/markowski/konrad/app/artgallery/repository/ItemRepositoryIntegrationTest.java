@@ -10,11 +10,15 @@ import pl.markowski.konrad.app.artgallery.repository.entity.ItemEntity;
 import java.util.Optional;
 
 @SpringBootTest
+//@Transactional
 class ItemRepositoryIntegrationTest {
     public static final String ITEM_TITLE_KRAJOBRAZ = "Krajobraz";
 
     @Autowired
     private ItemRepository itemRepository;
+
+    @Autowired
+    private AuthorRepository authorRepository;
 
 //    public ItemRepositoryIntegrationTest(ItemRepository itemRepository) {
 //        this.itemRepository = itemRepository;
@@ -69,15 +73,27 @@ class ItemRepositoryIntegrationTest {
     }
 
     @Test
-    void itemAuthor(){
+//    @Transactional
+//    @Rollback(value = false)
+    void itemAuthor() {
         // Given
         ItemEntity itemEntity = new ItemEntity();
-        AuthorEntity authorEntity = new AuthorEntity();
-        itemEntity.setAuthor(authorEntity);
-        // When
-        itemRepository.save(itemEntity);
-        // Then
+        itemEntity.setTitle("Tytuł");
 
+        ItemEntity secondItemEntity = new ItemEntity();
+        secondItemEntity.setTitle("Second");
+
+        AuthorEntity authorEntity = new AuthorEntity();
+        authorEntity.setFirstName("Konrad");
+
+        itemEntity.setAuthor(authorEntity);
+        secondItemEntity.setAuthor(authorEntity);
+        // When
+        authorRepository.save(authorEntity);
+        itemRepository.save(itemEntity);
+        itemRepository.save(secondItemEntity);
+        // Then
+        System.out.println(authorRepository.findAll());
     }
 
 }
