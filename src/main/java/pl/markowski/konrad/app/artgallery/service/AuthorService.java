@@ -15,6 +15,7 @@ public class AuthorService {
 
     private AuthorRepository authorRepository;
 
+
     public AuthorService(AuthorRepository authorRepository) {
         this.authorRepository = authorRepository;
     }
@@ -61,6 +62,6 @@ public class AuthorService {
     }
     // L - list
     public List<AuthorEntity> list() {
-       return authorRepository.findAll();
+        return authorRepository.findAll();
     }
 }
