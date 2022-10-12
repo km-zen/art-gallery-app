@@ -6,4 +6,5 @@ import pl.markowski.konrad.app.artgallery.repository.entity.AuthorEntity;
 
 @Repository
 public interface AuthorRepository extends JpaRepository<AuthorEntity, Long> {
+    AuthorEntity findByName(String name);
 }
